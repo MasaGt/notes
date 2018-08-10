@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SPA Starter</title>
+
+    <link rel="stylesheet" href="css/spa.css">
+    <link rel="stylesheet" href="css/spa.shell.css">
+
+    <script type="text/javascript" src="js/jq/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jq/jquery.uriAnchor.js"></script>
+
+    <script type="text/javascript" src="js/spa.js"></script>
+    <script type="text/javascript" src="js/spa.shell.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        spa.initModule($('#spa'));
+      });
+
+    </script>
+
+  </head>
+  <body>
+    <div id="spa">
+    </div>
+  </body>
+</html>

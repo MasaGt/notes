@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+/* アプリ全体のスタイル */
+/**リセット**/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  margin-bottom: 10px;
+}
+
+ol,ul,dl {
+  list-style-position: inside;
+}
+/**リセット**/
+
+body {
+  background-color: #888;
+  color: #444;
+  font: 13px 'Trebuchet MS', Verdana, Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link, a:visited{
+  text-decoration: underline;
+}
+
+strong {
+  color: #000;
+  font-weight: 800;
+}
+
+#spa {
+  position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+
+    background-color: #fff;
+    border-radius: 0 8px 0 8px;
+    overflow: hidden;
+    min-height: 500px;
+    min-width: 500px;
+}
+
+.spa-x-select {}
+
+.spa-x-clearfloat {
+  clear: both !important;
+  float: none !important;
+  height: 0 !important;
+  visibility: hidden !important;
+}
