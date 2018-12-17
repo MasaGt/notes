@@ -2,14 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../style/product_style.css">
     <title>Product App</title>
   </head>
   <body>
-    <!-- <div id="app">
-      <h1>{{ product + ' ' + stock * price }}</h1>
-    </div> -->
-    <div class="main">
-      <p>{{ hands.join(' - ')}}</p>
+    <div class="nav-bar"></div>
+
+    <div id="app">
+      <div class="product">
+
+          <div class="product-image">
+            <a :href="1+2">
+              <img :src="image">
+            </a>
+          </div>
+
+          <div class="product-info">
+            <h1>{{ product }}</h1>
+          </div>
+
+      </div>
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
