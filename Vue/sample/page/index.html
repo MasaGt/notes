@@ -19,8 +19,9 @@
 
           <div class="product-info">
             <h1>{{ product }}</h1>
+            <p v-show="num > 10">more than 10</p>
+            <p v-else-show="num <= 10 && num > 0">less than 10</p>
           </div>
-
       </div>
     </div>
   </body>
