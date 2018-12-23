@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../style/product_style.css">
-    <title>Product App</title>
-  </head>
-  <body>
-    <div class="nav-bar"></div>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../style/product_style.css">
+  <title>Product App</title>
+</head>
+<body>
+  <div class="nav-bar"></div>
 
-    <div id="app">
-      <div class="product">
+  <div id="app">
+    <div class="product">
 
-          <div class="product-image">
-            <a :href="1+2">
-              <img :src="image">
-            </a>
-          </div>
+      <div class="product-image">
+        <a :href="link">
+          <img :src="image">
+        </a>
+      </div>
 
-          <div class="product-info">
-            <h1>{{ product }}</h1>
-            <p v-show="num > 10">more than 10</p>
-            <p v-else-show="num <= 10 && num > 0">less than 10</p>
-          </div>
+      <div class="product-info">
+        <h1>{{ product }}</h1>
+        <p v-if="stock > 10">In Stock</p>
+        <p v-else-if="10 >= stock && stock > 0">Almost Sold Out</p>
+        <p v-else>Sold Out</p>
+
+        <ul>
+          <li v-for="detail in details">{{ detail }}</li>
+        </ul>
       </div>
     </div>
-  </body>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="../js/main.js"></script>
-</html>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script
+src="../js/main.js"></script> </html>

@@ -14,7 +14,7 @@
   - JS側  
     1.  Vueインスタンスを生成し、引数にプロパティを設定したオブジェクトを渡す   
     ・el: データを渡す対象のセレクタ(id→#~、class→.~　等)
-    ・data:HTML側に渡したいデータ
+    ・data:HTML側に渡したいデータを持つオブジェクト
             var sample = new Vue({
               el: 'elemname';
               data: {
