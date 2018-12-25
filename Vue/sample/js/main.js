@@ -4,7 +4,7 @@ var app = new Vue({
     product: 'Socks',
     image: '../img/Socks-green.jpg',
     link: 'https://www.google.co.jp/',
-    stock: 11,
+    stock: 1,
     details: ["80% cotton", "20% polyester", "Gender-neutral"],
     variants: [
       {id: 1, color: "Green", img:"../img/Socks-green.jpg"},
@@ -15,10 +15,12 @@ var app = new Vue({
   methods: {
     addToCart() {
       this.cart += 1;
+      this.stock -= 1;
     },
     removeFromCart() {
       if (this.cart >= 1) {
         this.cart -= 1;
+        this.stock += 1;
       }
     },
     changeImg(showImg) {

@@ -27,11 +27,17 @@
           <li v-for="detail in details">{{ detail }}</li>
         </ul>
 
-        <div v-for="item in variants" :key="item.id">
-          <p v-on:mouseover="changeImg(item.img)">{{ item.color }}</p>
+        <div v-for="item in variants"
+          :key="item.id"
+          class="color-box"
+          v-bind:style="{ backgroundColor: item.color }"
+          @mouseover="changeImg(item.img)"
+          >
         </div>
 
-        <button @click="addToCart">Add to cart</button>
+        <button @click="addToCart"
+          v-bind:disabled="!stock >= 1"
+          v-bind:class="{disabledButton: !stock >= 1}">Add to cart</button>
         <button @click="removeFromCart">Remove from cart</button>
 
         <div class="cart">
