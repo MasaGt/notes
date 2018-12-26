@@ -1,8 +1,9 @@
 var app = new Vue({
   el: '#app',
   data: {
+    brand: 'Vue Mastery',
     product: 'Socks',
-    image: '../img/Socks-green.jpg',
+    selectedVariant: 0,
     link: 'https://www.google.co.jp/',
     stock: 1,
     details: ["80% cotton", "20% polyester", "Gender-neutral"],
@@ -23,8 +24,16 @@ var app = new Vue({
         this.stock += 1;
       }
     },
-    changeImg(showImg) {
-      this.image = showImg;
-    }
-  }
+    changeImg(index) {
+      this.selectedVariant = index;
+    },
+  },
+  computed: {
+    title() {
+      return this.brand + ' ' + this.product;
+    },
+    image() {
+      return this.variants[this.selectedVariant].img;
+    },
+  },
 });
