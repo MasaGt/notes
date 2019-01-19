@@ -1,4 +1,5 @@
 Vue.component('product', {
+  props: ['cart'],
   template: `
    <div class="product">
       <div class="product-image">
@@ -30,9 +31,6 @@ Vue.component('product', {
           v-bind:class="{disabledButton: !stock >= 1}">Add to cart</button>
         <button @click="removeFromCart">Remove from cart</button>
 
-        <div class="cart">
-          <p>Cart {{ cart }}</p>
-        </div>
       </div>
     </div>
   `,
@@ -42,24 +40,29 @@ Vue.component('product', {
       product: 'Socks',
       selectedVariant: 0,
       link: 'https://www.google.co.jp/',
-      stock: 1,
+      stock: 10,
       details: ['80% cotton', '20% polyester', 'Gender-neutral'],
       variants: [
         { id: 1, color: 'Green', img: '../img/Socks-green.jpg' },
         { id: 2, color: 'Blue', img: '../img/Socks-blue.jpg' },
       ],
-      cart: 0,
+      isBought: true,
     };
   },
   methods: {
     addToCart() {
-      this.cart += 1;
       this.stock -= 1;
+      this.$emit('add-to-cart', this.variants[this.selectedVariant].id, this.isBought);
     },
     removeFromCart() {
-      if (this.cart >= 1) {
-        this.cart -= 1;
+      var target = this.variants[this.selectedVariant].id;
+      isRemovable = this.cart.some(function (item) {
+        return target === item;
+      });
+
+      if(isRemovable) {
         this.stock += 1;
+        this.$emit('remove-from-cart', this.variants[this.selectedVariant].id, !this.isBought);
       }
     },
     changeImg(index) {
@@ -78,4 +81,25 @@ Vue.component('product', {
 
 var app = new Vue({
   el: '#app',
+  data: {
+    cart: [],
+  },
+  methods: {
+    /**
+      run when addToCart, removeFromCart buttons are blicked.
+      [args]
+        id: productID
+        purchaseFlg: judge to add or remove
+    */
+    updateCart(id, purchaseFlg) {
+      if (purchaseFlg) {
+        this.cart.push(id);
+      } else {
+        let removeTargetIndex = this.cart.lastIndexOf(id);
+        if (removeTargetIndex !== -1) {
+          this.cart.splice(removeTargetIndex, 1);
+        }
+      }
+    },
+  },
 });
